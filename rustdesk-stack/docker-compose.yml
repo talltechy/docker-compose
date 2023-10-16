@@ -15,7 +15,7 @@ services:
     image: rustdesk/rustdesk-server-pro:latest
     command: sh -c "hbbs -r $RUSTDESK_HOST:$RUSTDESK_PORT"
     volumes:
-      - ./data:/root
+      - rustdesk-data:/root
     networks:
       - rustdesk-net
     depends_on:
@@ -33,7 +33,10 @@ services:
     image: rustdesk/rustdesk-server-pro:latest
     command: hbbr
     volumes:
-      - ./data:/root
+      - rustdesk-data:/root
     networks:
       - rustdesk-net
     restart: unless-stopped
+
+volumes:
+  rustdesk-data:
