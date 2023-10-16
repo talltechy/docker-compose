@@ -5,26 +5,6 @@ networks:
     driver: bridge
 
 services:
-  hbbs:
-    container_name: hbbs
-    ports:
-      - 21115:21115
-      - 21116:21116
-      - 21116:21116/udp
-      - 21118:21118
-    image: rustdesk/rustdesk-server-pro:latest
-    command: sh -c "hbbs -r $RUSTDESK_HOST:$RUSTDESK_PORT"
-    volumes:
-      - rustdesk-data:/root
-    networks:
-      - rustdesk-net
-    depends_on:
-      - hbbr
-    restart: unless-stopped
-    environment:
-      - RUSTDESK_HOST=rustdesk.example.com
-      - RUSTDESK_PORT=21117
-
   hbbr:
     container_name: hbbr
     ports:
@@ -38,5 +18,26 @@ services:
       - rustdesk-net
     restart: unless-stopped
 
+  hbbs:
+    container_name: hbbs
+    ports:
+      - 21115:21115
+      - 21116:21116
+      - 21116:21116/udp
+      - 21118:21118
+    image: rustdesk/rustdesk-server-pro:latest
+    command: hbbs -r $RUSTDESK_HOST:$RUSTDESK_PORT
+    volumes:
+      - rustdesk-data:/root
+    networks:
+      - rustdesk-net
+    depends_on:
+      - hbbr
+    restart: unless-stopped
+    environment:
+      - RUSTDESK_HOST=rustdesk.example.com
+      - RUSTDESK_PORT=21117
+
 volumes:
   rustdesk-data:
+    driver: local
