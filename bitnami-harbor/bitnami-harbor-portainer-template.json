@@ -1,0 +1,39 @@
+[
+    {
+      "type": 2,
+      "title": "Bitnami Harbor",
+      "description": "Harbor Registry by Bitnami",
+      "note": "Ensure to change default secrets and passwords",
+      "platform": "linux",
+      "categories": ["registry"],
+      "image": "harbor-logo.png",
+      "env": [
+        {
+          "name": "POSTGRESQL_PASSWORD",
+          "label": "PostgreSQL Password",
+          "description": "Password for the PostgreSQL database",
+          "default": "bitnami"
+        },
+        {
+          "name": "HARBOR_ADMIN_PASSWORD",
+          "label": "Harbor Admin Password",
+          "description": "Password for the Harbor admin user",
+          "default": "bitnami"
+        }
+        // Add more environment variables as needed
+      ],
+      "repository": {
+        "url": "https://github.com/talltechy/docker-compose",
+        "stackfile": "bitnami-harbor/docker-compose.yml"
+      },
+      "pre_deploy": [
+        "curl -L https://github.com/bitnami/containers/archive/main.tar.gz | tar xz --strip=6 containers-main/bitnami/harbor-portal/2/debian-11/config",
+        "mv config/registry/* ./config/registry/",
+        "mv config/registryctl/* ./config/registryctl/",
+        "mv config/core/* ./config/core/",
+        "mv config/jobservice/* ./config/jobservice/",
+        "mv config/proxy/* ./config/proxy/"
+      ]
+    }
+  ]
+  
