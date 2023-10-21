@@ -9,6 +9,24 @@
       "image": "harbor-logo.png",
       "env": [
         {
+          "name": "REGISTRY_HTTP_SECRET",
+          "label": "Registry HTTP Secret",
+          "description": "HTTP secret for the registry",
+          "default": "CHANGEME"
+        },
+        {
+          "name": "CORE_SECRET",
+          "label": "Core Secret",
+          "description": "Secret for Harbor Core",
+          "default": "CHANGEME"
+        },
+        {
+          "name": "JOBSERVICE_SECRET",
+          "label": "Job Service Secret",
+          "description": "Secret for Harbor Job Service",
+          "default": "CHANGEME"
+        },
+        {
           "name": "POSTGRESQL_PASSWORD",
           "label": "PostgreSQL Password",
           "description": "Password for the PostgreSQL database",
@@ -19,6 +37,12 @@
           "label": "Harbor Admin Password",
           "description": "Password for the Harbor admin user",
           "default": "bitnami"
+        },
+        {
+          "name": "ALLOW_EMPTY_PASSWORD",
+          "label": "Allow Empty Password for Redis",
+          "description": "Allow empty password for Redis",
+          "default": "yes"
         }
         // Add more environment variables as needed
       ],
