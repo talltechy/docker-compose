@@ -1,63 +1,193 @@
 [
-    {
-      "type": 2,
-      "title": "Bitnami Harbor",
-      "description": "Harbor Registry by Bitnami",
-      "note": "Ensure to change default secrets and passwords",
-      "platform": "linux",
-      "categories": ["registry"],
-      "image": "harbor-logo.png",
-      "env": [
         {
-          "name": "REGISTRY_HTTP_SECRET",
-          "label": "Registry HTTP Secret",
-          "description": "HTTP secret for the registry",
-          "default": "CHANGEME"
-        },
-        {
-          "name": "CORE_SECRET",
-          "label": "Core Secret",
-          "description": "Secret for Harbor Core",
-          "default": "CHANGEME"
-        },
-        {
-          "name": "JOBSERVICE_SECRET",
-          "label": "Job Service Secret",
-          "description": "Secret for Harbor Job Service",
-          "default": "CHANGEME"
-        },
-        {
-          "name": "POSTGRESQL_PASSWORD",
-          "label": "PostgreSQL Password",
-          "description": "Password for the PostgreSQL database",
-          "default": "bitnami"
-        },
-        {
-          "name": "HARBOR_ADMIN_PASSWORD",
-          "label": "Harbor Admin Password",
-          "description": "Password for the Harbor admin user",
-          "default": "bitnami"
-        },
-        {
-          "name": "ALLOW_EMPTY_PASSWORD",
-          "label": "Allow Empty Password for Redis",
-          "description": "Allow empty password for Redis",
-          "default": "yes"
+            "type": 2,
+            "title": "Bitnami Harbor",
+            "description": "Harbor Registry by Bitnami",
+            "note": "Ensure to change default secrets and passwords",
+            "platform": "linux",
+            "categories": ["registry"],
+            "image": "harbor-logo.png",
+            "env": [
+                {
+                    "name": "REGISTRY_HTTP_SECRET",
+                    "label": "Registry HTTP Secret",
+                    "description": "HTTP secret for the registry",
+                    "default": "CHANGEME"
+                },
+                {
+                    "name": "CORE_SECRET",
+                    "label": "Core Secret",
+                    "description": "Secret for Harbor Core",
+                    "default": "CHANGEME"
+                },
+                {
+                    "name": "JOBSERVICE_SECRET",
+                    "label": "Job Service Secret",
+                    "description": "Secret for Harbor Job Service",
+                    "default": "CHANGEME"
+                },
+                {
+                    "name": "POSTGRESQL_PASSWORD",
+                    "label": "PostgreSQL Password",
+                    "description": "Password for the PostgreSQL database",
+                    "default": "bitnami"
+                },
+                {
+                    "name": "HARBOR_ADMIN_PASSWORD",
+                    "label": "Harbor Admin Password",
+                    "description": "Password for the Harbor admin user",
+                    "default": "bitnami"
+                },
+                {
+                    "name": "ALLOW_EMPTY_PASSWORD",
+                    "label": "Allow Empty Password for Redis",
+                    "description": "Allow empty password for Redis",
+                    "default": "yes"
+                },
+                {
+                    "name": "CORE_KEY",
+                    "label": "Core Key",
+                    "description": "Key for Harbor Core",
+                    "default": "change-this-key"
+                },
+                {
+                    "name": "SYNC_REGISTRY",
+                    "label": "Sync Registry",
+                    "description": "Sync registry",
+                    "default": "false"
+                },
+                {
+                    "name": "CHART_CACHE_DRIVER",
+                    "label": "Chart Cache Driver",
+                    "description": "Chart cache driver",
+                    "default": "redis"
+                },
+                {
+                    "name": "PORT",
+                    "label": "Port",
+                    "description": "Port for Harbor Core",
+                    "default": "8080"
+                },
+                {
+                    "name": "LOG_LEVEL",
+                    "label": "Log Level",
+                    "description": "Log level for Harbor Core",
+                    "default": "info"
+                },
+                {
+                    "name": "EXT_ENDPOINT",
+                    "label": "External Endpoint",
+                    "description": "External endpoint for Harbor Core",
+                    "default": "http://reg.mydomain.com"
+                },
+                {
+                    "name": "DATABASE_TYPE",
+                    "label": "Database Type",
+                    "description": "Database type for Harbor Core",
+                    "default": "postgresql"
+                },
+                {
+                    "name": "REGISTRY_CONTROLLER_URL",
+                    "label": "Registry Controller URL",
+                    "description": "Registry controller URL for Harbor Core",
+                    "default": "http://registryctl:8080"
+                },
+                {
+                    "name": "POSTGRESQL_HOST",
+                    "label": "PostgreSQL Host",
+                    "description": "PostgreSQL host for Harbor Core",
+                    "default": "postgresql"
+                },
+                {
+                    "name": "POSTGRESQL_PORT",
+                    "label": "PostgreSQL Port",
+                    "description": "PostgreSQL port for Harbor Core",
+                    "default": "5432"
+                },
+                {
+                    "name": "POSTGRESQL_DATABASE",
+                    "label": "PostgreSQL Database",
+                    "description": "PostgreSQL database for Harbor Core",
+                    "default": "registry"
+                },
+                {
+                    "name": "POSTGRESQL_USERNAME",
+                    "label": "PostgreSQL Username",
+                    "description": "PostgreSQL username for Harbor Core",
+                    "default": "postgres"
+                },
+                {
+                    "name": "POSTGRESQL_SSLMODE",
+                    "label": "PostgreSQL SSL Mode",
+                    "description": "PostgreSQL SSL mode for Harbor Core",
+                    "default": "disable"
+                },
+                {
+                    "name": "REGISTRY_URL",
+                    "label": "Registry URL",
+                    "description": "Registry URL for Harbor Core",
+                    "default": "http://registry:5000"
+                },
+                {
+                    "name": "TOKEN_SERVICE_URL",
+                    "label": "Token Service URL",
+                    "description": "Token service URL for Harbor Core",
+                    "default": "http://core:8080/service/token"
+                },
+                {
+                    "name": "CORE_URL",
+                    "label": "Core URL",
+                    "description": "Core URL for Harbor Core",
+                    "default": "http://core:8080"
+                },
+                {
+                    "name": "JOBSERVICE_URL",
+                    "label": "Job Service URL",
+                    "description": "Job service URL for Harbor Core",
+                    "default": "http://jobservice:8080"
+                },
+                {
+                    "name": "REGISTRY_STORAGE_PROVIDER_NAME",
+                    "label": "Registry Storage Provider Name",
+                    "description": "Registry storage provider name for Harbor Core",
+                    "default": "filesystem"
+                },
+                {
+                    "name": "REGISTRY_CREDENTIAL_USERNAME",
+                    "label": "Registry Credential Username",
+                    "description": "Registry credential username for Harbor Core",
+                    "default": "harbor_registry_user"
+                },
+                {
+                    "name": "REGISTRY_CREDENTIAL_PASSWORD",
+                    "label": "Registry Credential Password",
+                    "description": "Registry credential password for Harbor Core",
+                    "default": "harbor_registry_password"
+                },
+                {
+                    "name": "READ_ONLY",
+                    "label": "Read Only",
+                    "description": "Read only for Harbor Core",
+                    "default": "false"
+                },
+                {
+                    "name": "RELOAD_KEY",
+                    "label": "Reload Key",
+                    "description": "Reload key for Harbor Core",
+                    "default": ""
+                }
+            ],
+            "repository": {
+                "url": "https://github.com/talltechy/docker-compose",
+                "stackfile": "bitnami-harbor/docker-compose.yml"
+            },
+            "pre_deploy": [
+                "curl -L https://github.com/bitnami/containers/archive/main.tar.gz | tar xz --strip=6 containers-main/bitnami/harbor-portal/2/debian-11/config",
+                "mv config/registry/* ./config/registry/",
+                "mv config/registryctl/* ./config/registryctl/",
+                "mv config/core/* ./config/core/",
+                "mv config/jobservice/* ./config/jobservice/",
+                "mv config/proxy/* ./config/proxy/"
+            ]
         }
-        // Add more environment variables as needed
-      ],
-      "repository": {
-        "url": "https://github.com/talltechy/docker-compose",
-        "stackfile": "bitnami-harbor/docker-compose.yml"
-      },
-      "pre_deploy": [
-        "curl -L https://github.com/bitnami/containers/archive/main.tar.gz | tar xz --strip=6 containers-main/bitnami/harbor-portal/2/debian-11/config",
-        "mv config/registry/* ./config/registry/",
-        "mv config/registryctl/* ./config/registryctl/",
-        "mv config/core/* ./config/core/",
-        "mv config/jobservice/* ./config/jobservice/",
-        "mv config/proxy/* ./config/proxy/"
-      ]
-    }
-  ]
-  
+    ]
