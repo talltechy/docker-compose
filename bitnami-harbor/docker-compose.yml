@@ -21,7 +21,7 @@ services:
       - JOBSERVICE_SECRET=CHANGEME
       - REGISTRY_HTTP_SECRET=CHANGEME
     volumes:
-      - registry_data:/storage
+      - harbor_registry_data:/storage
       - ./config/registry/:/etc/registry/:ro
       - ./config/registryctl/config.yml:/etc/registryctl/config.yml:ro
 
@@ -32,7 +32,7 @@ services:
       - POSTGRESQL_PASSWORD=bitnami
       - POSTGRESQL_DATABASE=registry
     volumes:
-      - postgresql_data:/bitnami/postgresql
+      - harbor_postgresql_data:/bitnami/postgresql
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 30s
@@ -74,7 +74,7 @@ services:
       - READ_ONLY=false
       - RELOAD_KEY=
     volumes:
-      - core_data:/data
+      - harbor_core_data:/data
       - ./config/core/app.conf:/etc/core/app.conf:ro
       - ./config/core/private_key.pem:/etc/core/private_key.pem:ro
 
@@ -98,7 +98,7 @@ services:
       - REGISTRY_CREDENTIAL_USERNAME=harbor_registry_user
       - REGISTRY_CREDENTIAL_PASSWORD=harbor_registry_password
     volumes:
-      - jobservice_data:/var/log/jobs
+      - harbor_jobservice_data:/var/log/jobs
       - ./config/jobservice/config.yml:/etc/jobservice/config.yml:ro
 
   redis:
@@ -107,7 +107,7 @@ services:
       # ALLOW_EMPTY_PASSWORD is recommended only for development.
       - ALLOW_EMPTY_PASSWORD=yes
     volumes:
-      - redis_data:/bitnami/redis
+      - harbor_redis_data:/bitnami/redis
 
   harbor-nginx:
     image: docker.io/bitnami/nginx:1.25
