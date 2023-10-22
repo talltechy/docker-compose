@@ -118,7 +118,8 @@ services:
     ports:
       - '80:8080'
     networks:
-      - bridge
+      - default
+      - harbor_external_network
     depends_on:
       postgresql:
         condition: service_healthy
@@ -130,6 +131,12 @@ services:
         condition: service_started
       jobservice:
         condition: service_started
+
+networks:
+  default:
+    driver: bridge
+  harbor_external_network:
+    external: true
 
 volumes:
   harbor_registry_data:
