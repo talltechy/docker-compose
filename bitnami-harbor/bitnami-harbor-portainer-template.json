@@ -67,8 +67,20 @@
         {
           "name": "PORT",
           "label": "Port",
-          "description": "Port for Harbor Core",
+          "description": "Port for Nginx",
           "default": "8080"
+        },
+        {
+          "name": "NETWORKS",
+          "label": "Networks",
+          "description": "Networks for Nginx",
+          "default": "bridge"
+        },
+        {
+          "name": "HARBOR_ADMIN_USERNAME",
+          "label": "Harbor Admin Username",
+          "description": "Username for the Harbor admin user",
+          "default": "admin"
         },
         {
           "name": "LOG_LEVEL",
