@@ -10,7 +10,7 @@ docker volume create harbor_redis_data
 docker volume create harbor_registry_data
 docker volume create harbor_config
 
-cd /var/lib/docker/volumes/harbor_config
+cd /var/lib/docker/volumes/harbor_config/_data
 
 # Download and extract Harbor portal configuration files
 # Original Command
