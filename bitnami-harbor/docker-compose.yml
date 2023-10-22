@@ -10,7 +10,7 @@ services:
     environment:
       - REGISTRY_HTTP_SECRET=CHANGEME
     volumes:
-      - registry_data:/storage
+      - harbor_registry_data:/storage
       - ./config/registry/:/etc/registry/:ro
     container_name: harbor-registry
 
@@ -129,13 +129,13 @@ services:
         condition: service_started
 
 volumes:
-  registry_data:
+  harbor_registry_data:
     driver: local
-  core_data:
+  harbor_core_data:
     driver: local
-  jobservice_data:
+  harbor_jobservice_data:
     driver: local
-  postgresql_data:
+  harbor_postgresql_data:
     driver: local
-  redis_data:
+  harbor_redis_data:
     driver: local
