@@ -1,6 +1,6 @@
 # Copyright VMware, Inc.
 # SPDX-License-Identifier: APACHE-2.0
-
+# Updated by @talltechy
 ---
 version: '2'
 
@@ -33,6 +33,11 @@ services:
       - POSTGRESQL_DATABASE=registry
     volumes:
       - postgresql_data:/bitnami/postgresql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 30s
+      timeout: 30s
+      retries: 3
 
   core:
     image: docker.io/bitnami/harbor-core:2
@@ -112,11 +117,16 @@ services:
     ports:
       - '80:80'
     depends_on:
-      - postgresql
-      - registry
-      - core
-      - portal
-      - jobservice
+      postgresql:
+        condition: service_healthy
+      registry:
+        condition: service_started
+      core:
+        condition: service_started
+      portal:
+        condition: service_started
+      jobservice:
+        condition: service_started
 
 volumes:
   registry_data:
