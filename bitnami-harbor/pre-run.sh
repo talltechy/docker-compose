@@ -8,9 +8,10 @@ docker volume create harbor_core_data
 docker volume create harbor_jobservice_data
 docker volume create harbor_redis_data
 docker volume create harbor_registry_data
-docker volume create harbor_config
 
-cd /var/lib/docker/volumes/harbor_config/_data
+mkdir -p /mnt/usr/appdata/harbor_config
+chmod 700 /mnt/usr/appdata/harbor_config
+cd /mnt/usr/appdata/harbor_config
 
 # Download and extract Harbor portal configuration files
 # Original Command
