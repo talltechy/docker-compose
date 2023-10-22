@@ -74,7 +74,7 @@
           "name": "external_network",
           "label": "External Network",
           "description": "External Network for Nginx",
-          "default": "external_network"
+          "default": "br4.10"
         },
         {
             "name": "STATIC_IP",
