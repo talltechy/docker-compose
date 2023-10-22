@@ -77,6 +77,12 @@
           "default": "harbor_external_network"
         },
         {
+            "name": "STATIC_IP",
+            "label": "Optional: Static IP",
+            "description": "Optional: Static IP for Nginx",
+            "default": ""
+        },
+        {
           "name": "HARBOR_ADMIN_USERNAME",
           "label": "Harbor Admin Username",
           "description": "Username for the Harbor admin user",

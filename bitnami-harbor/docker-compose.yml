@@ -13,6 +13,8 @@ services:
       - harbor_registry_data:/storage
       - /mnt/usr/appdata/harbor_config/config/registry/:/etc/registry/:ro
     container_name: harbor-registry
+    networks:
+      default:
 
   registryctl:
     image: docker.io/bitnami/harbor-registryctl:2
@@ -24,6 +26,8 @@ services:
       - harbor_registry_data:/storage
       - /mnt/usr/appdata/harbor_config/config/registry/:/etc/registry/:ro
       - /mnt/usr/appdata/harbor_config/config/registryctl/config.yml:/etc/registryctl/config.yml:ro
+    networks:
+      default:
 
   postgresql:
     image: docker.io/bitnami/postgresql:13
@@ -33,6 +37,8 @@ services:
       - POSTGRESQL_DATABASE=registry
     volumes:
       - harbor_postgresql_data:/bitnami/postgresql
+    networks:
+      default:
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 30s
@@ -77,12 +83,16 @@ services:
       - harbor_core_data:/data
       - /mnt/usr/appdata/harbor_config/config/core/app.conf:/etc/core/app.conf:ro
       - /mnt/usr/appdata/harbor_config/config/core/private_key.pem:/etc/core/private_key.pem:ro
+    networks:
+      default:
 
   portal:
     image: docker.io/bitnami/harbor-portal:2
     container_name: harbor-portal
     depends_on:
       - core
+    networks:
+      default:
 
   jobservice:
     image: docker.io/bitnami/harbor-jobservice:2
@@ -100,6 +110,8 @@ services:
     volumes:
       - harbor_jobservice_data:/var/log/jobs
       - /mnt/usr/appdata/harbor_config/config/jobservice/config.yml:/etc/jobservice/config.yml:ro
+    networks:
+      default:
     restart: on-failure:3 # Only restart if the container fails 3 times
 
   redis:
@@ -109,6 +121,8 @@ services:
       - ALLOW_EMPTY_PASSWORD=yes
     volumes:
       - harbor_redis_data:/bitnami/redis
+    networks:
+      default:
 
   harbor-nginx:
     image: docker.io/bitnami/nginx:1.25
@@ -118,8 +132,9 @@ services:
     ports:
       - '80:8080'
     networks:
-      - default
-      - harbor_external_network
+      default:
+      harbor_external_network:
+        ipv4_address: ${STATIC_IP:-}
     depends_on:
       postgresql:
         condition: service_healthy
