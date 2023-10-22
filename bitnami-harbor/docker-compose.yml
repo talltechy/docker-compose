@@ -11,7 +11,7 @@ services:
       - REGISTRY_HTTP_SECRET=CHANGEME
     volumes:
       - harbor_registry_data:/storage
-      - harbor_config/_data/config/registry/:/etc/registry/:ro
+      - harbor_config/config/registry/:/etc/registry/:ro
     container_name: harbor-registry
 
   registryctl:
@@ -22,8 +22,8 @@ services:
       - REGISTRY_HTTP_SECRET=CHANGEME
     volumes:
       - harbor_registry_data:/storage
-      - harbor_config/_data/config/registry/:/etc/registry/:ro
-      - harbor_config/_data/config/registryctl/config.yml:/etc/registryctl/config.yml:ro
+      - harbor_config/config/registry/:/etc/registry/:ro
+      - harbor_config/config/registryctl/config.yml:/etc/registryctl/config.yml:ro
 
   postgresql:
     image: docker.io/bitnami/postgresql:13
@@ -75,8 +75,8 @@ services:
       - RELOAD_KEY=
     volumes:
       - harbor_core_data:/data
-      - harbor_config/_data/config/core/app.conf:/etc/core/app.conf:ro
-      - harbor_config/_data/config/core/private_key.pem:/etc/core/private_key.pem:ro
+      - harbor_config/config/core/app.conf:/etc/core/app.conf:ro
+      - harbor_config/config/core/private_key.pem:/etc/core/private_key.pem:ro
 
   portal:
     image: docker.io/bitnami/harbor-portal:2
@@ -99,7 +99,7 @@ services:
       - REGISTRY_CREDENTIAL_PASSWORD=harbor_registry_password
     volumes:
       - harbor_jobservice_data:/var/log/jobs
-      - harbor_config/_data/config/jobservice/config.yml:/etc/jobservice/config.yml:ro
+      - harbor_config/config/jobservice/config.yml:/etc/jobservice/config.yml:ro
 
   redis:
     image: docker.io/bitnami/redis:7.0
@@ -113,7 +113,7 @@ services:
     image: docker.io/bitnami/nginx:1.25
     container_name: nginx
     volumes:
-      - harbor_config/_data/config/proxy/nginx.conf:/opt/bitnami/nginx/conf/nginx.conf:ro
+      - harbor_config/config/proxy/nginx.conf:/opt/bitnami/nginx/conf/nginx.conf:ro
     ports:
       - '80:80'
     depends_on:
