@@ -74,7 +74,7 @@
           "name": "external_network",
           "label": "External Network",
           "description": "External Network for Nginx",
-          "default": "harbor_external_network"
+          "default": "external_network"
         },
         {
             "name": "STATIC_IP",

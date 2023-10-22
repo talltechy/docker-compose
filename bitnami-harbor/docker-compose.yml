@@ -133,7 +133,7 @@ services:
       - '80:8080'
     networks:
       default:
-      harbor_external_network:
+      external_network:
         ipv4_address: ${STATIC_IP:-}
     depends_on:
       postgresql:
@@ -150,7 +150,8 @@ services:
 networks:
   default:
     driver: bridge
-  harbor_external_network:
+  external_network:
+    driver: macvlan
     external: true
 
 volumes:
