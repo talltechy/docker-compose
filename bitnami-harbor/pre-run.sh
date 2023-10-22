@@ -8,8 +8,10 @@ mkdir -p /data/compose/harbor/data
 chmod 755 /data/compose/harbor/config
 chmod 755 /data/compose/harbor/data
 
+# Download and extract Harbor portal configuration files
+curl -L https://github.com/bitnami/containers/archive/main.tar.gz | tar xz --strip=2 containers-main/bitnami/harbor-portal && cp -RL harbor-portal/config /data/compose/harbor/config && rm -rf harbor-portal
+
 # Create Docker volumes
-# Note: Replace 'harbor_postgresql_data' and other volume names with the actual names used in your compose/json files
 docker volume create harbor_postgresql_data
 docker volume create harbor_core_data
 docker volume create harbor_jobservice_data
