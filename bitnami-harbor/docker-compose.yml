@@ -151,7 +151,6 @@ networks:
   default:
     driver: bridge
   external_network:
-    driver: macvlan
     external: true
 
 volumes:
