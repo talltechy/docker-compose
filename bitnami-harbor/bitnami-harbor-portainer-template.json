@@ -182,15 +182,7 @@
       "repository": {
         "url": "https://github.com/talltechy/docker-compose",
         "stackfile": "bitnami-harbor/docker-compose.yml"
-      },
-      "pre_deploy": [
-        "curl -L https://github.com/bitnami/containers/archive/main.tar.gz | tar xz --strip=6 containers-main/bitnami/harbor-portal/2/debian-11/config",
-        "mv config/registry/* ./config/registry/",
-        "mv config/registryctl/* ./config/registryctl/",
-        "mv config/core/* ./config/core/",
-        "mv config/jobservice/* ./config/jobservice/",
-        "mv config/proxy/* ./config/proxy/"
-      ]
+      }
     }
   ]
 }
