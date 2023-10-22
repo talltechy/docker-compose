@@ -115,7 +115,7 @@ services:
     volumes:
       - /mnt/usr/appdata/harbor_config/config/proxy/nginx.conf:/opt/bitnami/nginx/conf/nginx.conf:ro
     ports:
-      - '80:80'
+      - '80:8080'
     depends_on:
       postgresql:
         condition: service_healthy
