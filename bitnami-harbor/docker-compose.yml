@@ -100,6 +100,7 @@ services:
     volumes:
       - harbor_jobservice_data:/var/log/jobs
       - /mnt/usr/appdata/harbor_config/config/jobservice/config.yml:/etc/jobservice/config.yml:ro
+    restart: on-failure:3 # Only restart if the container fails 3 times
 
   redis:
     image: docker.io/bitnami/redis:7.0
