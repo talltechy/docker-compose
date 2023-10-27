@@ -1,5 +1,5 @@
 {
-  "_comment": "This file is used by the Docker Compose integration of Portainer (https://portainer.io) to provide a template for the Bitnami Harbor stack, however until this comment is updated it should be noted that it does not work correctly.",
+  "_comment": "This file is used by the Docker Compose integration of Portainer (https://portainer.io) to provide a template for the Bitnami Harbor stack (https://bitnami.com/stack/harbor), however until this comment is updated it should be noted that it does not work correctly.",
   "version": "2",
   "templates": [
     {
